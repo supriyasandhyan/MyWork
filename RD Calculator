@@ -1,0 +1,134 @@
+RD.html
+-----------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="RD.css">
+    
+    <title>RD Calculator</title>
+</head>
+<body class="body-background">
+    
+    <div id=outer>
+        <h1>Recurring Deposit Calculator</h1>
+    
+        <div id=cover>
+        <form>
+        <table class=main>
+        <col class=w50>
+        <tr>
+            <td>Monthly deposit<td>
+            <input id=principal>
+        <tr>
+            <td>Interest Rate<td>
+            <input id=rate>
+        <tr>
+            <td>Interest Compounding<td>
+            
+                <select id=ci>
+             <option value=12>Monthly
+                <option value=4 selected>Quarterly
+                    <option value=2>Half Yearly
+                        <option value=1>Yearly
+            </select>
+        <tr>
+            <td>Period (months)<td>
+            <input id=time>
+        <tr>
+            <td></td>
+            <td>
+                <button type="reset">Reset</button>
+                <button type="button" onclick=rdmaturity();>Submit</button>
+            </td>
+            <tr>
+            <td><b>Maturity Value</b><td>
+            <input id=mv>
+            </table>
+            </form>
+           </div>
+        </div>
+    
+        <script src="RD.js"></script>
+</body>
+</html>
+
+RD.css
+-----------------------------------
+#outer{
+    width:100%;
+    max-width:500px; 
+    margin:0 auto;
+    padding-top: 10%;
+}
+.body-background{
+    height:100vh;
+ 
+    background-image: linear-gradient(to top, #69bfe0 0%, #ca5c9c 100%);
+}
+/* #cover
+{
+    border:2px solid rgb(82, 81, 81);
+    padding:45px;
+}  */
+.main{
+    table-layout:fixed;
+    width:94%;
+    border:0;
+    border-collapse:collapse;
+    margin:0 auto
+}
+.main td{
+    padding:0 8px;
+    vertical-align:middle;
+    
+    border:0;
+    font:500 16px arial
+}
+.main input{
+    width:95%;
+    margin:5px 0;
+    padding:0 2%;
+    height:22px;
+    text-align:right;
+}
+.ci{
+    border-color: #333;
+    border:1px solid #ccc;
+}
+h1{
+    text-align: center;
+    font-size: 30px;
+    font-family: monospace;
+    margin-top: 15px;
+}
+.main select{
+    width:100%;
+    border:1px solid #ccc;
+    margin:2px 0;
+    background:#fff;
+    height:22px;
+}
+.w50{
+    width:50%;
+}
+
+RD.JS
+---------------------------
+
+    function rdmaturity()
+    {
+    var rate=document.getElementById('rate').value;
+    var ci=document.getElementById('ci').value;
+    var time=document.getElementById('time').value;
+    var irate=rate/ci;
+    var mv=document.getElementById('mv').value;
+    var year=time/12;
+    document.getElementById('mv').value=(document.getElementById('principal').value*(Math.pow((1+ irate/100),(year)*ci)-1)/(1-Math.pow((1+irate/100),-ci/12))).toFixed(2)
+    }
+
+    $(function () {
+        rdmaturity();   
+    });
