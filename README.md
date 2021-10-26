@@ -1,0 +1,5 @@
+- 👋 Hi, I’m Supriya Premraj Sandhyan
+- 👀 I’m interested in Java, Mysql and Front End Technologies
+- 🌱 I’m currently learning Java Full Stack Developer certification from Edubridge
+- 💞️ I’m looking to collaborate on programming
+- 📫 How to reach me: supriyasandhyan@gmail.com
